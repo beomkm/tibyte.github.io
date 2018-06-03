@@ -3,6 +3,9 @@ layout: page
 title: "Posts"
 permalink: /posts/
 ---
+{% for post in site.posts %}
+<p>{{ post.title }}</p>
+{% endfor %}
 
 {% for category in site.categories %}
   {% capture cat %}{{ category | first }}{% endcapture %}

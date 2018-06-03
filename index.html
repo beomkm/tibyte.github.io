@@ -14,19 +14,48 @@ layout: default
 </div>
 -->
 
+
+
+
 <div class="wrapper">
+
+<ul>
+  {% assign tags_max = 0 %}
+  {% for tag in site.tags %}
+    {% if tag[1].size > tags_max %}
+      {% assign tags_max = tag[1].size %}
+    {% endif %}
+  {% endfor %}
+  {% for i in (1..tags_max) reversed %}
+    {% for tag in site.tags %}
+      {% if tag[1].size == i %}
+        <li>
+          <a href="#{{ tag[0] | slugify }}">
+            <strong>{{ tag[0] }}</strong> ({{ i }})
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+</ul>
+
+
 <ul class="post-list">
   {% for post in paginator.posts %}
   <li>
-    <h2>
+    <h3 class=nomargin>
       <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-    </h2>
+    </h3>
+      {{ post.summary | strip_html | truncatewords: 50 }}
     <section class="post-excerpt" itemprop="description">
-      <p>{{ post.content | strip_html | truncatewords: 50 }}</p>
     </section>
     <section class="post-meta">
-      <div class="post-date">{{ post.date | date: "%B %-d, %Y" }}</div>
+      <div class="post-date">{{ post.date | date: "%Y-%m-%d" }}</div>
       <div class="post-categories">
+      {% if post.tags.size > 0 %}in {% for tag in post.tags %}
+        <a href="#">{{ tag | capitalize }}</a>{% if forloop.last == false %}, {% endif %}
+      {% endfor %}{% endif %}
+separator
       {% if post.categories.size > 0 %}in {% for cat in post.categories %}
         {% if site.jekyll-archives %}
         <a href="{{ site.baseurl }}/category/{{ cat }}">{{ cat | capitalize }}</a>{% if forloop.last == false %}, {% endif %}
@@ -38,50 +67,63 @@ layout: default
     </section>
   </li>
   {% if forloop.last == false %}
-  <hr>
+  <hr class="nomargin">
   {% endif %}
   {% endfor %}
 </ul>
 
+
+{% assign section = 5 %}
+{% assign left_end = paginator.page | minus:1 | divided_by:section | times:section | plus:1 %}
+{% assign right_end = left_end | plus:section | minus:1 %}
+<!-- liquid at_most not working -->
+
 <nav class="pagination" role="navigation">
-	<p>
-    {% if paginator.previous_page %}
-			{% if paginator.page == 2 %}
-			<a class="newer-posts" href="{% if site.baseurl %}{{ site.baseurl }}{% endif %}/">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-square fa-stack-2x"></i>
-          <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
-        </span>
-      </a>
-			{% else %}
-			<a class="newer-posts" href="{{ site.baseurl }}/page{{paginator.previous_page}}">
-				<span class="fa-stack fa-lg">
-					<i class="fa fa-square fa-stack-2x"></i>
-					<i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
-				</span>
-			</a>
-			{% endif %}
-		{% else %}
-		<span class="fa-stack fa-lg">
-      <i class="fa fa-square fa-stack-2x"></i>
-      <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
-    </span>
-		{% endif %}
-		<span class="page-number">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
-		{% if paginator.next_page %}
-		<a class="newer-posts" href="{{ site.baseurl }}/page{{paginator.next_page}}">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-square fa-stack-2x"></i>
-        <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
-      </span>
-    </a>
-		{% else %}
-		<span class="fa-stack fa-lg">
-      <i class="fa fa-square fa-stack-2x"></i>
-      <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
-    </span>
-		{% endif %}
-	</p>
+<p>
+{% if left_end != 1 %}
+  <a class="newer-posts" href="{{ site.baseurl }}/page{{ left_end | minus:1 }}">
+  <span class="fa-stack fa-lg">
+  <i class="fa fa-square fa-stack-2x"></i>
+  <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+  </span>
+  </a>
+{% else %}
+  <span class="fa-stack fa-lg">
+  <i class="fa fa-square fa-stack-2x"></i>
+  <i class="fa fa-angle-double-left fa-stack-1x fa-inverse"></i>
+  </span>
+{% endif %}
+
+
+{% for i in (left_end..right_end) %}
+  {% if i > paginator.total_pages %} 
+    {% break %}
+    <!-- liquid at_most not working -->
+  {% endif %}
+  <span class="page-number">
+  {% if i == paginator.page %}
+    <b><u><a href="{{ site.baseurl }}/{% if i != 1 %}page{{ i }}{% endif %}">{{ i }}</a></b></u>
+  {% else %}
+    <a href="{{ site.baseurl }}/{% if i != 1 %}page{{ i }}{% endif %}">{{ i }}</a>
+  {% endif %}
+  </span>
+{% endfor %}
+
+
+{% if right_end < paginator.total_pages %}
+  <a class="newer-posts" href="{{ site.baseurl }}/page{{ right_end | plus:1 }}">
+  <span class="fa-stack fa-lg">
+  <i class="fa fa-square fa-stack-2x"></i>
+  <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+  </span>
+  </a>
+{% else %}
+  <span class="fa-stack fa-lg">
+  <i class="fa fa-square fa-stack-2x"></i>
+  <i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+  </span>
+{% endif %}
+</p>
 </nav>
 
 </div>
