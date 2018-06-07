@@ -15,10 +15,10 @@ layout: default
 -->
 
 
-
-
 <div class="wrapper">
 
+<button class="collapsible"><a>Tags</a></button>
+<div class="collapsible-content">
 <ul>
   {% assign tags_max = 0 %}
   {% for tag in site.tags %}
@@ -38,6 +38,8 @@ layout: default
     {% endfor %}
   {% endfor %}
 </ul>
+</div>
+
 
 
 <ul class="post-list">

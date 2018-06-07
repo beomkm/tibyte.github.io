@@ -12,12 +12,8 @@
     </a>
     <nav role="navigation">
       <ul id="js-navigation-menu" class="navigation-menu show">
-          <li class="nav-link"><a href="{{ site.baseurl }}/">Recent</a>
-        {% for page in site.pages %}
-          {% if page.title and page.main_nav != false %}
-          <li class="nav-link"><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-          {% endif %}
-        {% endfor %}
+        <li class="nav-link"><a href="{{ site.baseurl }}/">Recent</a>
+        <li class="nav-link"><a href="{{ site.baseurl }}/about">About</a>
       </ul>
     </nav>
   </div>
