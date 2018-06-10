@@ -1,13 +1,12 @@
-#Tibyte blog
-
+# Tibyte blog
 The MIT License (MIT)
 
 Copyright (c) 2018 tibyte
 
+Powered by Github, Centrarium
 
 
-#Centrarium
-
+# Centrarium
 The MIT License (MIT)
 
 Copyright (c) 2015 Ben Centra
