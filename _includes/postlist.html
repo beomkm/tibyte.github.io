@@ -77,7 +77,7 @@ separator
   {% endif %}
 {% endfor %}
 </ul>
-{% assign total_tagpages = i | plus: 1 | divided_by: pagesize %}
+{% assign total_tagpages = i | plus: pagesize | minus : 1 |  divided_by: pagesize %}
 {% if i == 0 %}
 {% assign total_tagpages = 1 %}
 {% endif %}
