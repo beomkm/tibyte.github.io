@@ -106,6 +106,13 @@ pre code.hljs {
 	/*
 	*	Navigation Menu - http://refills.bourbon.io/unstyled/ (see "Navigation")
 	*/
+  .about-button {
+      display: block;
+      float: right;
+      margin: 0;
+      font-size: 1.0em;
+      padding-top: 1.2em;
+  }
   // Mobile view
   .navigation-menu-button {
     display: block;
@@ -201,6 +208,23 @@ pre code.hljs {
 	/*
 	*	index.html
 	*/
+        
+	.left-arrow {
+	    border: solid;
+	    border-width: 0 5px 5px 0;
+	    display: inline-block;
+	    padding: 5px;
+	    transform: rotate(135deg);
+	    -webkit-transform: rotate(135deg);
+	}
+        .right-arrow {
+	    border: solid;
+	    border-width: 0 5px 5px 0;
+	    display: inline-block;
+	    padding: 5px;
+	    transform: rotate(-45deg);
+	    -webkit-transform: rotate(-45deg);
+	}
 	.collapsible {
 	    background-color: #FFF;
 	    cursor: pointer;

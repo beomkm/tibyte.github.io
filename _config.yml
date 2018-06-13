@@ -10,7 +10,8 @@ subtitle: "tibyte blog"
 email: ttl74283@gmail.com
 name: B. Kim 
 description: >
-  A simple yet classy theme for your Jekyll website or blog.
+        Copyright (C) 2010-2018 tibyte.kr.
+        Powered by GitHub, Centrarium
 # Base URL of site (i.e. /blog). It should always start with a slash,
 # and never end with a slash. Set it to a blank value if hosting at the
 # root of your server.
@@ -77,7 +78,8 @@ descriptions:
 #     username: "@TheBenCentra"             # (User) Name to display in the footer link
 #     url: https://twitter.com/TheBenCentra # URL of your profile (leave blank to not display in footer)
 #     desc: Follow me on Twitter            # Description to display as link title, etc
-#     share: true                           # Include in the "Share" section of posts
+
+
 social:
   - name: GitHub
     icon: github
@@ -85,6 +87,7 @@ social:
     url: https://github.com/tibyte
     desc: Fork me on GitHub
     share: false
+
 
 # Social sharing protocols
 # These are for automatically generating sharing metadata for FB and Twitter
