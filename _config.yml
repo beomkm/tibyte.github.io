@@ -51,7 +51,7 @@ tag_archive:
 #    tag: '/tag/:name/'
 
 # Disqus comments
-# disqus_shortname: bencentra
+disqus_shortname: tibyte
 
 # Google analytics
 # ga_tracking_id: "UA-XXXX-1"
@@ -81,6 +81,13 @@ descriptions:
 
 
 social:
+  - name: Facebook
+    icon: facebook
+    username: tibyte
+    url:
+    desc: Friend me on Facebook
+    share: true
+
   - name: GitHub
     icon: github
     username: tibyte

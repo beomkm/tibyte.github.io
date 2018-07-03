@@ -32,6 +32,7 @@ code {
 	display: inline-block;
 	border-radius: 3px;
 	padding: 0 3px;
+	font-family: serif;
 }
 
 pre code.hljs {
@@ -314,9 +315,8 @@ pre code.hljs {
 		}
 	}
 	img {
-		display: block;
+		display: inline-block;
 		margin: auto;
-		width: 90%;
 	}
 	/*
 	*	Posts
