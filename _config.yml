@@ -22,10 +22,14 @@ logo: "/assets/logo.png"
 
 # Build settings
 markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+#highlightjs_theme: "monokai-sublime"
 #paginate: 10 
 #paginate_path: "/page:num/"
 inter_post_navigation: false
-highlightjs_theme: "monokai-sublime"
 
 include:
   - _pages
